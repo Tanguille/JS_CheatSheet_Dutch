@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en, nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheatsheet Web2</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript" charset="utf-8" src="script.js"></script>
+</head>
+
+<body>
+    <h1>Cheatsheet Web2: Javascript</h1>
+
+    <nav class="topnav" role="navigation">
+        <a class="topnav home active">Home</a>
+    </nav>
+
+    <div class="table">
+        <h3>Waardes uitlezen</h3>
+        <table cellpadding="4" cellspacing="0" summary=""
+            id="SILKTEST-21EEFF3F-DIFFERENCEBETWEENTEXTCONTENTSINNERTEXTINNERHTML-REF__TABLE_B374B1CE90374DA19410AA71563E976B"
+            class="table" frame="border" border="1" rules="all">
+            <thead class="thead" align="left">
+                <tr class="row">
+                    <th class="entry" align="top" width="37.03703703703704%" id="d161577e99">Code</th>
+                    <th class="entry" align="top" width="62.962962962962955%" id="d161577e102">Returned Value</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <tr class="row">
+                    <td class="entry" align="top" width="37.03703703703704%" headers="d161577e99 ">
+                        <samp class="ph codeph">
+                            browser.DomElement("//div[@id='mylinks']").GetProperty("textContents")</samp>
+                    </td>
+                    <td class="entry" align="top" width="62.962962962962955%" headers="d161577e102 ">
+                        <pre class="pre codeblock">This is my link collection:</pre>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="entry" align="top" width="37.03703703703704%" headers="d161577e99 ">
+                        <samp class="ph codeph">
+                            browser.DomElement("//div[@id='mylinks']").GetProperty("innerText")</samp>
+                    </td>
+
+                    <td class="entry" align="top" width="62.962962962962955%" headers="d161577e102 ">
+                        <pre class="pre codeblock">This is my link collection:Bye bye Borland Welcome to Micro Focus</pren>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="entry" align="top" width="37.03703703703704%" headers="d161577e99 ">
+                        <samp class="ph codeph"> browser.DomElement("//div[@id='mylinks']").GetProperty("innerHtml")</samp>
+                    </td>
+                    <td class="entry" align="top">
+                    <pre class="pre codeblock">
+This is my &lt;b&gt;link collection&lt;/b&gt;:
+&lt;ul&gt; 
+&lt;li&gt;&lt;a href="www.borland.com"&gt;Bye bye &lt;b&gt;Borland&lt;/b&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="www.microfocus.com"&gt;Welcome to &lt;b&gt;Micro Focus&lt;/b&gt;&lt;/a&gt;&lt;/li&gt; 
+&lt;/ul&gt;
+                    </pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="valueVScontent">
+        <h4>Opgelet:</h4>
+        <ul>
+            <li><b>.value</b> hoort enkel bij &lt;input&#62; elementen</li>
+            <li>
+                <b>.textContent en .innerHTML</b> horen nooit bij &lt;input&#62; elementen.
+                Strikt genomen, “bijna nooit” bv. wel als je de tekst op een button wil veranderen.
+            </li>
+            <li>
+                Om een een nieuw child element toe te voegen kun je beter <b>.insertAdjacentHTML(positie, html)</b>
+                gebruiken (zie verderop)
+                i.p.v. .innerHTML+= "..." te schrijven.<br>
+                <b>positie:</b> beforebegin, afterbegin, beforeend, afterend
+            </li>
+        </ul>
+    </div>
+
+    <div class="events">
+        <h3>Events</h3>
+        <b>Functie: elementNode.addEventListener("anEvent", ourFunction);</b>
+        <p>
+            Merk op dat er geen haakjes ( ) staan achter de naam van de callback functie!!!!!
+        </p>
+        <h4>Setup functie</h4>
+        <pre>
+const setup= () => {
+    ...
+}
+            
+window.addEventListener("load", setup);
+        </pre>
+
+        <p>
+            De setup function is een event listener die eigenlijk de initialisatie code bevat van onze applicatie.<br>
+            Typisch is dat hierin allerlei andere event listener functions aanhun resp. elementen worden gekoppeld.<br>
+            Moet in meeste gevallen onderaan als laatste functie opgeroepen worden in JS.<br>
+        </p>
+
+        <h4>Werken met meerdere events</h4>
+
+        <pre>
+let objecten = document.getElementsByClassName('object');
+for (let i = 0; i < objecten.length; i++) {
+    objecten[i].addEventListener('event', method);
+}
+            
+<b>Event.target:</b> returned object waarvan event getriggered werd.
+<b>Event.currentTarget:</b> returned object waarvan event momenteel uitgevoerd wordt.
+        </pre>
+    </div>
+
+    <div class="klasses">
+        <h3>Klasses</h3>
+        <ul>
+            <li>alle klasses achterhalen (1 string gescheiden door spaties): <b>element.className;</b></li>
+            <li>alle klasses verwijderen: <b>element.className = "";</b></li>
+            <li>klasse toevoegen: <b>element.classList.add("klasseNaam");</b></li>
+            <li>klasse verwijderen: <b>element.classList.remove("klasseNaam");</b></li>
+            <li>bepaalde klasse zoeken: <b>element.classList.contains("klasseNaam");</b></li>
+        </ul>
+    </div>
+
+    <div class="css">
+        <h3>CSS aanpassen</h3>
+        <ul>
+            <li>kleur: <b>elementNode.style.color="red";</b></li>
+            <li>achtergrond kleur: <b>elementNode.style.backgroundColor="red";</b></li>
+            <li>margin: <b>elementNode.style.marginLeft="10px";</b></li>
+        </ul>
+        <p>
+            Met klasses werken heeft voorkeur boven custom css.<br>
+            Overweeg enkel custom css bij veel mogelijke waarden.<br>
+            <br>
+            <b>typeof</b> returned type
+        </p>
+    </div>
+
+    <div class="random">
+        <h3>Random: Math.random()</h3>
+        <p>Opgelet, dit returned een float number!</p>
+        <pre>
+<b>Voorbeelden:</b>
+// Returns a random integer from 0 to 9:
+Math.floor(Math.random() * 10);
+
+// Returns a random integer from 1 to 10:
+Math.floor(Math.random() * 10) + 1;
+        </pre>
+    </div>
+
+    <div class="attributen">
+        <h3>Attributen van DOM-elementen manipuleren</h3>
+        <ul>
+            <li>
+                <b>element.getAttribute(a):</b> returned waarde van attribuut a van element.
+                (a parameter = string met naam attribuut)
+            </li>
+            <li><b>element.setAttribute(a, value):</b> stelt attribuut a van element in op v.</li>
+        </ul>
+    </div>
+</body>
+
+</html>
