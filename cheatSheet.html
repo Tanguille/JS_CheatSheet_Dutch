@@ -11,15 +11,15 @@
 </head>
 
 <body>
-    <h1>Cheatsheet Web2: Javascript</h1>
+    <h2>Cheatsheet Web2: Javascript</h2>
 
     <nav class="topnav" role="navigation">
         <a class="topnav home active">home</a>
     </nav>
-
-    <div class="table">
+    
+    <div class="input/output">
         <h3>Waardes uitlezen</h3>
-        <table cellpadding="4" cellspacing="0" summary=""
+        <table cellpadding="4" cellspacing="1" summary=""
             id="SILKTEST-21EEFF3F-DIFFERENCEBETWEENTEXTCONTENTSINNERTEXTINNERHTML-REF__TABLE_B374B1CE90374DA19410AA71563E976B"
             class="table" frame="border" border="1" rules="all">
             <thead class="thead" align="left">
@@ -30,18 +30,18 @@
             </thead>
             <tbody class="tbody">
                 <tr class="row">
-                    <td class="entry" align="top" width="37.03703703703704%" headers="d161577e99 ">
+                    <td class="entry" align="top" headers="d161577e99 ">
                         <samp class="ph codeph">
-                            browser.DomElement("//div[@id='mylinks']").GetProperty("textContents")</samp>
+                            element.GetProperty(<b>"textContents"</b>)</samp>
                     </td>
-                    <td class="entry" align="top" width="62.962962962962955%" headers="d161577e102 ">
+                    <td class="entry" align="top" headers="d161577e102 ">
                         <pre class="pre codeblock">This is my link collection:</pre>
                     </td>
                 </tr>
                 <tr class="row">
                     <td class="entry" align="top" width="37.03703703703704%" headers="d161577e99 ">
                         <samp class="ph codeph">
-                            browser.DomElement("//div[@id='mylinks']").GetProperty("innerText")</samp>
+                            element.GetProperty("<b>innerText</b>")</samp>
                     </td>
 
                     <td class="entry" align="top" width="62.962962962962955%" headers="d161577e102 ">
@@ -50,7 +50,7 @@
                 </tr>
                 <tr class="row">
                     <td class="entry" align="top" width="37.03703703703704%" headers="d161577e99 ">
-                        <samp class="ph codeph"> browser.DomElement("//div[@id='mylinks']").GetProperty("innerHtml")</samp>
+                        <samp class="ph codeph"> element.GetProperty("<b>innerHtml</b>")</samp>
                     </td>
                     <td class="entry" align="top">
                     <pre class="pre codeblock">
@@ -64,10 +64,8 @@ This is my &lt;b&gt;link collection&lt;/b&gt;:
                 </tr>
             </tbody>
         </table>
-    </div>
 
-    <div class="valueVScontent">
-        <h4>Opgelet:</h4>
+        <h4>Opgelet</h4>
         <ul>
             <li><b>.value</b> hoort enkel bij &lt;input&#62; elementen</li>
             <li>
@@ -165,7 +163,7 @@ Math.floor(Math.random() * 10) + 1;
             </li>
             <li><b>element.setAttribute(a, value):</b> stelt attribuut a van element in op v.</li>
         </ul>
-    </div>
+    </div>   
 </body>
 
 </html>
