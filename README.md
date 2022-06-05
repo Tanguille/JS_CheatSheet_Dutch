@@ -1,4 +1,4 @@
-# JS_CheatSheet_Dutch
+# JS_CheatSheet_Dutch [WIP]
 Simple Javascript CheatSheet made with html, css and Javascript in Dutch (my native language).
 
 
