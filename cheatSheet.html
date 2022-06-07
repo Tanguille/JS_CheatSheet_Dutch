@@ -16,9 +16,32 @@
     <nav class="topnav" role="navigation">
         <a class="topnav home active">home</a>
     </nav>
-    
+
+    <div class="general">
+        <h3>Naming convention</h3>
+        <ul>
+            <li>folder: styles/scripts</li>
+        </ul>
+
+        <h3>Functies</h3>
+        <ul>
+            <li><b>const allEqual = arr => arr.every(val => val === arr[0]);</b> Gemakkelijk om te checken of een array
+                allemaal identieke elementen bevat</li>
+        </ul>
+    </div>
+
     <div class="input/output">
         <h3>Waardes uitlezen</h3>
+        <ul>
+            <li><b>document.getElementById('id'):</b> Haalt data uit ID</li>
+            <li><b>document.querySelector('img'):</b> Haalt alle elementen uit css-selectoren of html-tags.</li>
+            <li><b>document.getElementsByClassName('classname'):</b> Haalt alle elementen uit Klasse. OPGELET: returened
+                array (index toevoegen voor 1 element).</li>
+            <li><b>document.querySelectorAll('img'):</b> Haalt alle elementen uit css-selectoren of html-tags.. OPGELET:
+                returened array (index toevoegen voor 1 element).</li>
+        </ul>
+
+        <h3>textContents vs innerText vs innerHTML</h3>
         <table cellpadding="4" cellspacing="1" summary=""
             id="SILKTEST-21EEFF3F-DIFFERENCEBETWEENTEXTCONTENTSINNERTEXTINNERHTML-REF__TABLE_B374B1CE90374DA19410AA71563E976B"
             class="table" frame="border" border="1" rules="all">
@@ -65,9 +88,59 @@ This is my &lt;b&gt;link collection&lt;/b&gt;:
             </tbody>
         </table>
 
+        <h3>Input</h3>
+        <b>.value</b> hoort enkel bij &lt;input&#62; elementen!
+        checkbox / radiobutton = bool => element.checked
+        <pre>
+Voorbeeld omgaan met radio buttons
+HTML code:
+&lt;input type="radio" name="colors" value="red" checked>
+&lt;input type="radio" name="colors" value="green">
+&lt;input type="radio" name="colors "value="blue">
+
+Javascript code: 
+var checkedRadioButton = document.querySelector("input[name='colors']:checked")
+        </pre>
+
+        <h4>&lt;Select> Element</h4>
+        Properties:
+        <ul>
+            <li>
+                <b>.options:</b> elementen uit Select, vormt array
+                <ul>
+                    <li><b>.selected:</b> bool die aangeeft of option geselecteerd is</li>
+                    <li><b>.value</b></li>
+                    <li><b>.text</b></li>
+                </ul>
+            </li>
+            <li>
+                <b>.selectedIndex:</b> index van eerste geselecteerde option (-1 = niets geselecteerd) =>
+                via dit zoek je geselecteerde optie op in .options array
+            </li>
+        </ul>
+        <pre>
+Voorbeeld omgaan met select elementen
+HTML code:
+&lt;select id="selfruit" size="4"multiple>
+    &lt;option>appel&lt;/option>
+    &lt;option>peer&lt;/option>
+    &lt;option>banaan&lt;/option>
+    &lt;option>kiwi&lt;/option>
+&lt;/select>
+
+Javascript code:
+let selectedOptions = document.querySelectorAll("#selFruit option:checked");
+            </pre>
+        <p>
+            De variabele selectedOptions zal nu een lijstbevatten met de geselecteerde options.<br>
+            Als je er maar eentje verwacht omdat het &lt;select> element geen multiple vermeldt, kun je natuurlijk
+            querySelector() gebruiken i.p.v. querySelectorAll().
+        </p>
+
+
+
         <h4>Opgelet</h4>
         <ul>
-            <li><b>.value</b> hoort enkel bij &lt;input&#62; elementen</li>
             <li>
                 <b>.textContent en .innerHTML</b> horen nooit bij &lt;input&#62; elementen.
                 Strikt genomen, “bijna nooit” bv. wel als je de tekst op een button wil veranderen.
@@ -115,6 +188,35 @@ for (let i = 0; i < objecten.length; i++) {
         </pre>
     </div>
 
+    <div class="arrays">
+        <h3>Index</h3>
+        <ul>
+            <li><b>Array.indexOf / Array.lastIndexOf:</b> index van value zoeken</li>
+            <li><b>Array.push:</b> element toevoegen einde</li>
+            <li><b>Array.pop:</b> element verwijderen einde</li>
+            <li><b>Array.slice(beginIndex, eindIndex):</b> elementen uit array halen, returned nieuwe array</li>
+        </ul>
+
+        <h3>Sort</h3>
+        <b>Array.sort(sortFunctie):</b> Sorteert array naar voorwaarden.
+
+        <pre>
+<b>Een array van getallen sorteren:</b>
+const compare= (a,b) => {
+    return a-b;
+}
+let array=[34, 67, 12, 5, 23];
+array.sort(compare);
+
+<b>Een array van strings sorteren:</b>
+const compare= (a, b) => {
+    return a.localeCompare(b);
+}
+let array=["zebra", "aap", "giraf", "ezel"];
+array.sort(compare);
+        </pre>
+    </div>
+
     <div class="klasses">
         <h3>Klasses</h3>
         <ul>
@@ -141,7 +243,7 @@ for (let i = 0; i < objecten.length; i++) {
         </p>
     </div>
 
-    <div class="random">
+    <div class="Math">
         <h3>Random: Math.random()</h3>
         <p>Opgelet, dit returned een float number!</p>
         <pre>
@@ -156,6 +258,7 @@ Math.floor(Math.random() * 10) + 1;
 
     <div class="attributen">
         <h3>Attributen van DOM-elementen manipuleren</h3>
+        Attributen zijn de parameters die in de html tag staan.
         <ul>
             <li>
                 <b>element.getAttribute(a):</b> returned waarde van attribuut a van element.
@@ -163,7 +266,7 @@ Math.floor(Math.random() * 10) + 1;
             </li>
             <li><b>element.setAttribute(a, value):</b> stelt attribuut a van element in op v.</li>
         </ul>
-    </div>   
+    </div>
 </body>
 
 </html>

@@ -10,8 +10,14 @@ html{
 
 div { 
   margin-left: 2%;
+  margin-top: 4%;
   margin-right: auto;
   line-height: 20px;
+}
+
+p, li{
+  font-size: small;
+  font-weight:80;
 }
 
 .hidden{
