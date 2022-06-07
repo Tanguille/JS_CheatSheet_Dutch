@@ -8,6 +8,10 @@ html{
   font-size: medium;
 }
 
+body{
+  padding-bottom: 500px;
+}
+
 div { 
   margin-left: 2%;
   margin-top: 4%;
