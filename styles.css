@@ -9,11 +9,11 @@ html{
 }
 
 body{
-  padding-bottom: 500px;
+  padding-bottom: 300px;
 }
 
 div { 
-  margin-left: 2%;
+  margin-left: 5%;
   margin-top: 4%;
   margin-right: auto;
   line-height: 20px;
@@ -61,3 +61,4 @@ p, li{
   background: none;
   display:none; 
 }
+

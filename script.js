@@ -1,6 +1,6 @@
 const setup = () => {
     let divs = document.querySelectorAll('div');
-    let nav = document.querySelector('nav');
+    let nav = document.querySelector('nav');    
 
     divs.forEach(div => {
         nav.insertAdjacentHTML("beforeend", `<a class="topnav">${div.className}</a>`);
