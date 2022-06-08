@@ -22,7 +22,7 @@ const filterDivs = (event) => {
     let selectedDiv = document.getElementsByClassName(selectedButton.innerHTML)[0];
     
     console.log(selectedDiv);
-    if (selectedDiv.classList.contains("home")) {
+    if (selectedDiv.classList.contains("Home")) {
         home = true;
     }
     

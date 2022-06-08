@@ -11,16 +11,17 @@
 </head>
 
 <body>
-    <h2>Cheatsheet Web2 : Javascript</h2>
+    <main>
+    <h2>Cheatsheet Web2: Javascript</h2>
 
     <nav class="topnav" role="navigation">
-        <a class="topnav home active">home</a>
+        <a class="topnav Home active">Home</a>
     </nav>
 
-    <div class="general">
+    <div class="General">
         <h3>Naming convention</h3>
         <ul>
-            <li>folder : styles/scripts</li>
+            <li>folder: styles/scripts</li>
         </ul>
 
         <h3>Functies</h3>
@@ -30,7 +31,7 @@
         </ul>
     </div>
 
-    <div class="input/output">
+    <div class="Input/Output">
         <h3>Waardes uitlezen</h3>
         <ul>
             <li><b>document.getElementById('id'):</b> Haalt data uit ID</li>
@@ -154,7 +155,7 @@ let selectedOptions = document.querySelectorAll("#selFruit option:checked");
         </ul>
     </div>
 
-    <div class="events">
+    <div class="Events">
         <h3>Events</h3>
         <b>Functie: elementNode.addEventListener("anEvent", ourFunction);</b>
         <p>
@@ -188,7 +189,7 @@ for (let i = 0; i < objecten.length; i++) {
         </pre>
     </div>
 
-    <div class="arrays">
+    <div class="Arrays">
         <h3>Index</h3>
         <ul>
             <li><b>Array.indexOf / Array.lastIndexOf:</b> index van value zoeken</li>
@@ -217,7 +218,7 @@ array.sort(compare);
         </pre>
     </div>
 
-    <div class="klasses">
+    <div class="Klasses">
         <h3>Klasses</h3>
         <ul>
             <li>alle klasses achterhalen (1 string gescheiden door spaties): <b>element.className;</b></li>
@@ -228,7 +229,7 @@ array.sort(compare);
         </ul>
     </div>
 
-    <div class="css">
+    <div class="CSS">
         <h3>CSS aanpassen</h3>
         <ul>
             <li>kleur: <b>elementNode.style.color="red";</b></li>
@@ -256,9 +257,13 @@ Math.floor(Math.random() * 10) + 1;
         </pre>
     </div>
 
-    <div class="attributen">
+    <div class="Attributen">
         <h3>Attributen van DOM-elementen manipuleren</h3>
-        Attributen zijn de parameters die in de html tag staan.
+        <p>
+            Attributen zijn de parameters die in de html tag staan.<br>
+            De waarde van attributen zijn altijd strings.<br>
+            Je kan custom attributen maken door "data-<i>kiesnaam</i>" te gebruiken.
+        </p>
         <ul>
             <li>
                 <b>element.getAttribute(a):</b> returned waarde van attribuut a van element.
@@ -267,6 +272,85 @@ Math.floor(Math.random() * 10) + 1;
             <li><b>element.setAttribute(a, value):</b> stelt attribuut a van element in op v.</li>
         </ul>
     </div>
+
+    <div class="Nodes">
+        <p>
+            We maken een onderscheid tussen methods die alle soorten nodes returnen en degene die elementen returnen<br>
+            <b>n</b> staat voor node in deze context.
+        </p>
+        <ul>
+            <li><b>n.parentNode:</b> Geeft parent, of null indien er geen is.</li>
+            <li>
+                <b>n.children (geeft enkel elementen) / n.childNodes:</b> Geeft lijst van childs (geen array maar .length en index werken)
+                <ul>
+                    <li><b>n.first(Element)Child:</b> geeft eerste child</li>
+                    <li><b>n.last(Element)Child:</b> geeft laatste child</li>
+                </ul>
+                n.firstElementChild en n.lastElementChild, komen vaak van pas bij het gebruik van insertAdjacentHTML() op posities"afterbegin" en "beforeend", als verwijzing naar het nieuwe element!
+            </li>            
+            <li><b>n.next(Element)Sibling / n.previous(Element)Sibling:</b> Geeft de volgende/vorige sibling, of null indien er geen is.</li>
+            <li><b>n.nodeName:</b>Geeft soort element als string</li>   
+            <li><b>n.nodeType:</b>Geeft soort element als getal (1=element, 2=attribuut, 3=text)</li>
+            <li><b>n.nodeValue: (enkel text nodes)</b>Geeft tekst in string of null indien element node.</li>       
+        </ul>
+    </div>
+
+    <div class="Date">
+        <h3>Voorbeelden</h3>
+        <pre>
+let now= new Date();
+let uren = now.getHours();                                              // uren
+let minuten = now.getMinutes();                                         // minuten
+console.log( `het is nu ${ uren} uur en ${ minuten} minuten` );
+
+console.log( `de datum is ${ now.getDate()} /${ now.getMonth()} ` );    // dag en maand
+console.log( now.toISOString());                                        //ISO 8601 formaat
+
+console.log( now.toString());
+Sun May 09 2021 23:52:43 GMT+0200 (CEST)                                // output
+
+console.log( now.toDateString());
+Sun May 09 2021                                                         // output
+
+console.log( now.toTimeString());
+23:52:43 GMT+0200 (CEST)                                                // output
+
+console.log( now.toISOString());
+2021-05-09T21:52:43.296Z                                                //output
+
+console.log( now.toISOString().substr(0,10));                           // het datum stukjeeruit halen met substr()
+2021-05-09                                                              // output
+
+console.log( now.toISOString().substr(11,8));                           // het tijd stukje eruit halen met substr()
+21:52:43                                                                // output
+        </pre>
+    </div>
+
+    <div class="Objecten">
+        <h3>Voorbeelden</h3>
+        <pre>
+Aparte values instellen:
+let student={};
+student.voornaam="Jan";
+student.familienaam="Janssens";
+student.geboortedatum=new Date("1993-12-31");
+
+object literal notatie (JSON):
+let student = {
+    voornaam : "Jan",
+    familienaam : "Janssens",
+    geboortedatum : new Date("1993-12-31"),
+    kotAdres : {                                                        // een object
+        straat : "Kerkstraat 12",
+        postcode : "8000",
+        gemeente : "Brugge"
+    },
+    isIngeschreven : true,                                              // een boolean
+    namenVanExen : ["Sofie", "Berta", "Philip", "Albertoooo"],          // een array
+};
+        </pre>
+    </div>
+</main>
 </body>
 
 </html>
