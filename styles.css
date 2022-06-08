@@ -12,9 +12,12 @@ body {
   padding-bottom: 300px;
 }
 
+h3 {
+  margin-top: 5%;
+}
+
 div {
   margin-left: 5%;
-  margin-top: 4%;
   margin-right: auto;
   line-height: 20px;
 }
