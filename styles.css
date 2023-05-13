@@ -3,28 +3,32 @@
   src: url("fonts/Roboto-Medium.ttf") format("truetype");
 }
 
-html{
+html {
   font-family: Roboto;
   font-size: medium;
 }
 
-body{
+body {
   padding-bottom: 300px;
 }
 
-div { 
+h3 {
+  margin-top: 5%;
+}
+
+div {
   margin-left: 5%;
-  margin-top: 4%;
   margin-right: auto;
   line-height: 20px;
 }
 
-p, li{
+p,
+li {
   font-size: small;
-  font-weight:80;
+  font-weight: 80;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
@@ -56,9 +60,8 @@ p, li{
   color: white;
 }
 
-.topnav button {  
+.topnav button {
   border: none;
   background: none;
-  display:none; 
+  display: none;
 }
-
